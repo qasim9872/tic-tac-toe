@@ -3,10 +3,6 @@ import 'twin.macro'
 
 import { Home } from './pages/home.page'
 
-const App = () => (
-  <div tw="h-screen flex">
-    <Home />
-  </div>
-)
+const App = () => <Home />
 
 export default App
