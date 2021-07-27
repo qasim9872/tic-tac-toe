@@ -8,8 +8,8 @@ import { PlaceHolder } from '../components/organisms/placeholder.organism'
 export const Home = () => {
   return (
     <>
-      <Hero />
       <AppTemplate>
+        <Hero color={tw`bg-electric`} />
         {[
           tw`bg-yellow-100`,
           tw`bg-pink-400`,

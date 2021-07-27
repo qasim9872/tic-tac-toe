@@ -1,18 +1,22 @@
 import React from 'react'
-import tw from 'twin.macro'
+import tw, { styled } from 'twin.macro'
 
 import { Logo } from '../atoms/logo'
 
-const Nav = tw.nav`bg-red-100 flex items-center justify-between px-4 py-2 left-0 top-0 w-full absolute z-10`
+const Nav = styled.nav(({ sticky }) => [
+  tw`transition-all`,
+  tw`bg-red-100 flex items-center justify-between px-4 py-2 left-0 top-0 w-full absolute z-10`,
+  sticky && tw`fixed shadow-lg animate-move-down-anim`,
+])
 const NavLogoHolder = tw.div`flex items-center justify-center`
 
 const NavLinksContainer = tw.ul`flex list-none`
 const NavLink = tw.li`cursor-pointer ml-2 mt-4 p-2 hover:text-blue-400`
 
 export const Header = ({ sticky = false }) => (
-  <Nav>
+  <Nav sticky={sticky}>
     <NavLogoHolder>
-      <Logo />
+      <Logo spin={sticky} />
       <h1> Stick'Me</h1>
     </NavLogoHolder>
     <NavLinksContainer>

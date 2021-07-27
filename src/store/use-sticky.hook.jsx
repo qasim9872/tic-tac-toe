@@ -16,6 +16,7 @@ export const useSticky = () => {
     let timeOut
     return () => {
       let context = this,
+        // eslint-disable-next-line no-undef
         args = arguments
       const later = () => {
         timeOut = null
