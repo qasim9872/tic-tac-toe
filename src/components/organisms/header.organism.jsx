@@ -9,7 +9,7 @@ const NavLogoHolder = tw.div`flex items-center justify-center`
 const NavLinksContainer = tw.ul`flex list-none`
 const NavLink = tw.li`cursor-pointer ml-2 mt-4 p-2 hover:text-blue-400`
 
-export const Header = () => (
+export const Header = ({ sticky = false }) => (
   <Nav>
     <NavLogoHolder>
       <Logo />
