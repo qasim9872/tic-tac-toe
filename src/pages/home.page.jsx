@@ -1,5 +1,8 @@
 import React from 'react'
+import 'twin.macro'
+
+import { AppTemplate } from '../components/templates/app.template'
 
 export const Home = () => {
-  return <div tw="flex flex-grow justify-center items-center">Home</div>
+  return <AppTemplate>Home</AppTemplate>
 }
