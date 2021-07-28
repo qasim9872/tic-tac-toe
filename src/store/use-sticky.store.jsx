@@ -1,10 +1,15 @@
 import { createContext } from 'react'
-import { useSticky } from './use-sticky.hook'
+import { useInView } from 'react-intersection-observer'
 
 export const UseStickyContext = createContext({})
 
 export const UseStickyProvider = ({ children }) => {
-  const sticky = useSticky()
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0,
+  })
+
+  const sticky = { element: ref, isSticky: !inView }
 
   return (
     <UseStickyContext.Provider value={sticky}>
