@@ -2,14 +2,14 @@ import 'twin.macro'
 import React from 'react'
 
 export const SecretCard = ({ secret }) => {
-  const { author, text, imgSrc } = secret
+  const { author, text } = secret
 
   return (
     <div tw="flex bg-white shadow-lg rounded-lg mx-4 w-full max-w-md md:mx-auto md:max-w-2xl ">
       <div tw="flex flex-grow items-start px-4 py-6">
         <img
           tw="w-12 h-12 rounded-full object-cover mr-4 shadow"
-          src={imgSrc}
+          src={`https://robohash.org/${author.author}?set=set2&size=180x180`}
           alt="avatar"
         />
 
