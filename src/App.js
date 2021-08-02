@@ -1,8 +1,8 @@
 import React from 'react'
 import 'twin.macro'
 
-import { Home } from './pages/home.page'
+import { Secrets } from './pages/secrets.page'
 
-const App = () => <Home />
+const App = () => <Secrets />
 
 export default App
