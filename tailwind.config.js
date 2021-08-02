@@ -1,6 +1,12 @@
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
 module.exports = {
   theme: {
     extend: {
+      fontFamily: {
+        rubik: ['Rubik', ...fontFamily.sans],
+        poppins: ['Poppins', ...fontFamily.sans],
+      },
       colors: {
         electric: '#db00ff',
         ribbon: '#0047ff',
