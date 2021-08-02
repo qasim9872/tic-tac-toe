@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useState } from 'react'
+const { secrets: MockSecrets } = require('./secrets.mock.json')
 
 const SecretsContext = createContext()
 
 export const SecretsContextProvider = ({ children }) => {
-  const [secrets, setSecrets] = useState([])
+  const [secrets, setSecrets] = useState(MockSecrets)
 
   const addSecret = secretToAdd => {
     console.log(`adding secret`)

@@ -16,7 +16,7 @@ export const Secrets = () => {
           <h1 tw="font-bold text-4xl font-rubik">What is your secret?</h1>
         </div>
 
-        <div tw="flex flex-grow justify-center items-center">
+        <div tw="bg-red-100 w-full flex flex-grow justify-center items-center">
           <SecretsList secrets={secrets} />
         </div>
       </Container>
