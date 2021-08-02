@@ -1,9 +1,8 @@
 {
-  "babelMacros": {
-    "twin": {
-      "preset": "styled-components"
-    }
-  },
+  "name": "my-secrets-jar",
+  "homepage": "https://qasim9872.github.io/my-secrets-jar",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -33,5 +32,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "babelMacros": {
+    "twin": {
+      "preset": "styled-components"
+    }
+  }
 }
