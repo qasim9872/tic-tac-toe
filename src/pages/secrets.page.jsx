@@ -14,10 +14,6 @@ export const Secrets = () => {
     console.log(`user submitted data`)
     console.log(data)
 
-    if (!data.secret) {
-      alert('secret is required')
-    }
-
     addSecret({
       id: (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1),
       text: data.secret,

@@ -18,6 +18,12 @@ export const SecretForm = ({ onSubmit, isSubmitting }) => {
 
   const onSubmitForm = event => {
     event.preventDefault()
+
+    if (!formData.secret) {
+      alert('secret is required')
+      return
+    }
+
     resetForm()
     onSubmit(formData)
   }
