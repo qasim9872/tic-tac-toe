@@ -1,18 +1,39 @@
-import React, { createContext, useContext, useState } from 'react'
+import compareDesc from 'date-fns/compareDesc'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 const { secrets: MockSecrets } = require('./secrets.mock.json')
 
 const SecretsContext = createContext()
 
 export const SecretsContextProvider = ({ children }) => {
   const [secrets, setSecrets] = useState(MockSecrets)
+  const [inProgress, setInProgress] = useState(false)
 
-  const addSecret = secretToAdd => {
-    console.log(`adding secret`)
-    setSecrets(previousSecrets => [...previousSecrets, secretToAdd])
+  useEffect(() => {
+    console.log(`secrets are updated. Sorting them`)
+
+    setSecrets(previousSecrets => {
+      return previousSecrets.sort(
+        ({ createdOn: createdOn1 }, { createdOn: createdOn2 }) =>
+          compareDesc(new Date(createdOn1), new Date(createdOn2)),
+      )
+    })
+  }, [secrets])
+
+  const addSecret = async secretToAdd => {
+    setInProgress(true)
+
+    setTimeout(() => {
+      setSecrets(previousSecrets => [
+        ...previousSecrets,
+        { ...secretToAdd, createdOn: new Date().toISOString() },
+      ])
+
+      setInProgress(false)
+    }, 2000)
   }
 
   return (
-    <SecretsContext.Provider value={{ secrets, addSecret }}>
+    <SecretsContext.Provider value={{ inProgress, secrets, addSecret }}>
       {children}
     </SecretsContext.Provider>
   )

@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { FormInput } from './form-input/form-input.component'
 import { Button } from '../../atoms/button.component'
 
-export const SecretForm = ({ onSubmit }) => {
+export const SecretForm = ({ onSubmit, isSubmitting }) => {
   const [formData, setFormData] = useState({ secret: '', author: '' })
 
   const handleChange = event => {
@@ -12,10 +12,20 @@ export const SecretForm = ({ onSubmit }) => {
     setFormData(previous => ({ ...previous, [name]: value }))
   }
 
+  const resetForm = () => {
+    setFormData({ secret: '', author: '' })
+  }
+
+  const onSubmitForm = event => {
+    event.preventDefault()
+    resetForm()
+    onSubmit(formData)
+  }
+
   return (
     <form
       tw="mt-4 flex flex-col space-y-2 p-4 border-2 border-black"
-      onSubmit={onSubmit}
+      onSubmit={onSubmitForm}
     >
       <div tw="flex flex-row space-x-4">
         <FormInput
@@ -23,7 +33,7 @@ export const SecretForm = ({ onSubmit }) => {
           label="secret"
           type="text"
           value={formData.secret}
-          handleChange={handleChange}
+          onChange={handleChange}
           required
         />
 
@@ -32,11 +42,14 @@ export const SecretForm = ({ onSubmit }) => {
           label="author"
           type="text"
           value={formData.author}
-          handleChange={handleChange}
+          onChange={handleChange}
         />
       </div>
 
-      <Button override={tw`w-full px-0 justify-center items-center`}>
+      <Button
+        isLoading={isSubmitting}
+        override={tw`w-full px-0 justify-center items-center`}
+      >
         Whisper
       </Button>
     </form>

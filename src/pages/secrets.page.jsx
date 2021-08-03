@@ -8,16 +8,29 @@ import { SecretForm } from '../components/organisms/secret-form/secret-form.comp
 import { useSecretsContext } from '../services/secrets/secrets.context'
 
 export const Secrets = () => {
-  const { secrets } = useSecretsContext()
+  const { inProgress, secrets, addSecret } = useSecretsContext()
 
-  const onSubmit = () => {}
+  const onSubmit = data => {
+    console.log(`user submitted data`)
+    console.log(data)
+
+    if (!data.secret) {
+      alert('secret is required')
+    }
+
+    addSecret({
+      id: (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1),
+      text: data.secret,
+      author: data.author || 'Anonymous',
+    }).then()
+  }
 
   return (
     <AppTemplate>
       <Container override={tw`flex-col`}>
         <div tw="flex justify-center items-center flex-col p-8">
           <h1 tw="font-bold text-4xl font-rubik">What is your secret?</h1>
-          <SecretForm onSubmit={onSubmit} />
+          <SecretForm isSubmitting={inProgress} onSubmit={onSubmit} />
         </div>
 
         <div tw="w-full flex justify-center items-center">
