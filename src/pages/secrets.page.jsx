@@ -15,12 +15,12 @@ export const Secrets = () => {
   return (
     <AppTemplate>
       <Container override={tw`flex-col`}>
-        <div tw="flex flex-col p-8">
+        <div tw="flex justify-center items-center flex-col p-8">
           <h1 tw="font-bold text-4xl font-rubik">What is your secret?</h1>
           <SecretForm onSubmit={onSubmit} />
         </div>
 
-        <div tw="w-full flex flex-grow justify-center items-center">
+        <div tw="w-full flex justify-center items-center">
           <SecretsList secrets={secrets} />
         </div>
       </Container>
