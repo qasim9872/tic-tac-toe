@@ -1,10 +1,10 @@
 import tw from 'twin.macro'
 import React, { useState } from 'react'
 
-import { FormInput } from './form-input/form-input.component'
-import { Button } from '../../atoms/button.component'
+import { Input } from '../../atoms/form/input.component'
+import { Button } from '../../atoms/form/button.component'
 
-export const SecretForm = ({ onSubmit, isSubmitting }) => {
+export const NoticePeriodForm = ({ onSubmit, isSubmitting }) => {
   const [formData, setFormData] = useState({ secret: '', author: '' })
 
   const handleChange = event => {
@@ -34,7 +34,7 @@ export const SecretForm = ({ onSubmit, isSubmitting }) => {
       onSubmit={onSubmitForm}
     >
       <div tw="flex flex-row space-x-4">
-        <FormInput
+        <Input
           name="secret"
           label="secret"
           type="text"
@@ -43,7 +43,7 @@ export const SecretForm = ({ onSubmit, isSubmitting }) => {
           required
         />
 
-        <FormInput
+        <Input
           name="author"
           label="author"
           type="text"
