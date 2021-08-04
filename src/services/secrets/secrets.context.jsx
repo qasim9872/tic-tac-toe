@@ -14,10 +14,10 @@ export const SecretsContextProvider = ({ children }) => {
   const [inProgress, setInProgress] = useState(false)
   const [error, setError] = useState(null)
 
-  useEffect(() => {
+  const loadRequests = () => {
     setInProgress(true)
 
-    getSecretsRequest()
+    return getSecretsRequest()
       .then(loadedSecrets => loadedSecrets.map(transformSecret))
       .then(transformedSecrets => {
         setSecrets(transformedSecrets)
@@ -30,6 +30,10 @@ export const SecretsContextProvider = ({ children }) => {
       .finally(() => {
         setInProgress(false)
       })
+  }
+
+  useEffect(() => {
+    loadRequests()
   }, [])
 
   useEffect(() => {
@@ -48,6 +52,7 @@ export const SecretsContextProvider = ({ children }) => {
 
     try {
       await addSecretRequest(secretToAdd)
+      await loadRequests()
     } catch (err) {
       console.log(`an error occurred while adding secret`, err)
       setError(err.toString())
