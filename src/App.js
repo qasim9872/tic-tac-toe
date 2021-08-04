@@ -1,13 +1,8 @@
 import React from 'react'
 import 'twin.macro'
 
-import { Secrets } from './pages/secrets.page'
-import { SecretsContextProvider } from './services/secrets/secrets.context'
+import { Home } from './pages/home.page'
 
-const App = () => (
-  <SecretsContextProvider>
-    <Secrets />
-  </SecretsContextProvider>
-)
+const App = () => <Home />
 
 export default App

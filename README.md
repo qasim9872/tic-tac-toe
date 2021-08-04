@@ -1,6 +1,6 @@
-# My Secrets Jar
+# Notice Period Calculator
 
-A react application that uses firebase to maintain a list of secrets.
+A react application that will calculate your notice period
 
 ## Getting started
 
