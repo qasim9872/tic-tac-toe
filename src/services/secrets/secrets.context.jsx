@@ -1,12 +1,36 @@
 import compareDesc from 'date-fns/compareDesc'
 import React, { createContext, useContext, useState, useEffect } from 'react'
-const { secrets: MockSecrets } = require('./secrets.mock.json')
+
+import {
+  transformSecret,
+  addSecretRequest,
+  getSecretsRequest,
+} from './secrets.service'
 
 const SecretsContext = createContext()
 
 export const SecretsContextProvider = ({ children }) => {
-  const [secrets, setSecrets] = useState(MockSecrets)
+  const [secrets, setSecrets] = useState([])
   const [inProgress, setInProgress] = useState(false)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    setInProgress(true)
+
+    getSecretsRequest()
+      .then(loadedSecrets => loadedSecrets.map(transformSecret))
+      .then(transformedSecrets => {
+        setSecrets(transformedSecrets)
+        setInProgress(false)
+      })
+      .catch(err => {
+        console.log(`an error occurred while loading secrets`, err)
+        setError(err.toString())
+      })
+      .finally(() => {
+        setInProgress(false)
+      })
+  }, [])
 
   useEffect(() => {
     console.log(`secrets are updated. Sorting them`)
@@ -22,18 +46,18 @@ export const SecretsContextProvider = ({ children }) => {
   const addSecret = async secretToAdd => {
     setInProgress(true)
 
-    setTimeout(() => {
-      setSecrets(previousSecrets => [
-        ...previousSecrets,
-        { ...secretToAdd, createdOn: new Date().toISOString() },
-      ])
-
+    try {
+      await addSecretRequest(secretToAdd)
+    } catch (err) {
+      console.log(`an error occurred while adding secret`, err)
+      setError(err.toString())
+    } finally {
       setInProgress(false)
-    }, 2000)
+    }
   }
 
   return (
-    <SecretsContext.Provider value={{ inProgress, secrets, addSecret }}>
+    <SecretsContext.Provider value={{ error, inProgress, secrets, addSecret }}>
       {children}
     </SecretsContext.Provider>
   )
