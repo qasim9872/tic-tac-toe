@@ -1,6 +1,6 @@
-# Notice Period Calculator
+# React CRA Boilerplate
 
-A react application that will calculate your notice period
+A very basic react boilerplate with Twin Macro
 
 ## Getting started
 
