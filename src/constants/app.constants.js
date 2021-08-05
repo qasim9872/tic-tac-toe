@@ -5,8 +5,8 @@ const constants = {
   app: {
     icon: 'tick',
     href: homepage,
-    name: 'React CRA Boilerplate',
-    tagline: 'A react boilerplate with Twin.Macro!',
+    name: 'Tic Tac Toe',
+    tagline: 'Lets play a game of Tic Tac Toe!',
   },
   author: {
     name: 'Muhammad Qasim',
