@@ -1,10 +1,10 @@
-import tw from 'twin.macro'
+import 'twin.macro'
 import React from 'react'
 
 import { icons } from '../icons'
 
 export const SocialIcon = ({ icon, href }) => {
-  const Icon = tw(icons[icon])`w-5 h-5 text-gray-500`
+  const Icon = icons[icon]
 
   return (
     <a href={href}>
