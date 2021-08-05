@@ -7,7 +7,7 @@ export const Footer = () => {
     <footer tw="text-gray-600 font-poppins">
       <div tw="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
         <a
-          href="https://qasim9872.github.io/notice-period-calculator"
+          href="https://qasim9872.github.io/tic-tac-toe"
           tw="flex font-rubik font-medium items-center md:justify-start justify-center text-gray-900"
         >
           <ArchiveIcon tw="w-8 h-8" />
