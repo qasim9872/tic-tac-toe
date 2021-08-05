@@ -6,6 +6,7 @@ const constants = {
     icon: 'tick',
     href: homepage,
     name: 'Tic Tac Toe',
+    tagline: 'Play a game of Tic Tac Toe!',
   },
   author: {
     name: 'Muhammad Qasim',
