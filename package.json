@@ -1,6 +1,6 @@
 {
-  "name": "tic-tac-toe",
-  "homepage": "https://qasim9872.github.io/tic-tac-toe",
+  "name": "react-cra-boilerplate",
+  "homepage": "https://qasim9872.github.io/react-cra-boilerplate",
   "version": "0.1.0",
   "private": true,
   "scripts": {
