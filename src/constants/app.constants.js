@@ -1,3 +1,16 @@
-const constants = {}
+import { ProviderWithContextHoc } from '../utils/hoc/provider-with-context'
 
-export default constants
+const constants = {
+  appName: 'Tic Tac Toe',
+  author: 'Muhammad Qasim',
+  socials: {
+    twitter: '',
+    github: '',
+    linkedin: '',
+  },
+}
+
+export const {
+  Provider: GlobalConstantsProvider,
+  useHook: useGlobalConstantsHook,
+} = ProviderWithContextHoc(constants)
