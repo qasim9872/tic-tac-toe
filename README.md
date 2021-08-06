@@ -1,4 +1,4 @@
-# React CRA Boilerplate
+# Tic Tac Toe
 
 A very basic react boilerplate with Twin Macro
 
