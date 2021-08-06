@@ -13,6 +13,7 @@ export const useGameTurn = () => {
   useEffect(() => setPlayer((turn % TOTAL_PLAYERS) + 1), [turn])
 
   const next = () => setTurn(previousTurn => previousTurn + 1)
+  const reset = () => setTurn(0)
 
-  return { turn, next, player }
+  return { turn, next, player, reset }
 }

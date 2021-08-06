@@ -11,8 +11,8 @@ import { useGameTurn } from '../hooks/use-game-turn'
 import { icons } from '../components/atoms/icons/icons'
 
 export const Home = () => {
-  const { reset, grid, mark, getMark } = useGrid()
-  const { next, player } = useGameTurn()
+  const { reset: resetGrid, grid, mark, getMark } = useGrid()
+  const { reset: resetGameTurn, next, player } = useGameTurn()
 
   const map = {
     1: <icons.gameTick tw="w-12 h-12" />,
@@ -37,7 +37,10 @@ export const Home = () => {
     next()
   }
 
-  const restart = () => reset()
+  const restart = () => {
+    resetGrid()
+    resetGameTurn()
+  }
 
   return (
     <AppTemplate>
